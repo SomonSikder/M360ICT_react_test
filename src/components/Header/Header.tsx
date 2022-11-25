@@ -32,63 +32,69 @@ const Header = () => {
   const handleFilter = (status: string) => {
     switch (status) {
       case "lastWeek":
-        const lastWeekData = data.filter((item: { launch_year: string }) => {
-          const dif = differenceInDays(
-            parseISO(formatISO(new Date())),
-            parseISO(item.launch_year)
-          );
-          if (dif === 7) {
-            return dif;
-          }
-        });
+        return setSearchData(
+          data.filter((item: { launch_year: string }) => {
+            const dif = differenceInDays(
+              parseISO(formatISO(new Date())),
+              parseISO(item.launch_year)
+            );
+            if (dif === 7) {
+              return dif;
+            }
+            return null;
+          })
+        );
 
-        setSearchData(lastWeekData);
-        break;
       case "lastMonth":
-        const lastMonthData = data.filter((item: { launch_year: string }) => {
-          const dis = differenceInDays(
-            parseISO(formatISO(new Date())),
-            parseISO(item.launch_year)
-          );
-          if (dis === 30) {
-            return dis;
-          }
-        });
-        setSearchData(lastMonthData);
-        break;
+        return setSearchData(
+          data.filter((item: { launch_year: string }) => {
+            const dis = differenceInDays(
+              parseISO(formatISO(new Date())),
+              parseISO(item.launch_year)
+            );
+            if (dis === 30) {
+              return dis;
+            }
+            return null;
+          })
+        );
       case "lastYear":
-        const lastYearData = data.filter((item: { launch_year: string }) => {
-          const dis = differenceInDays(
-            parseISO(formatISO(new Date())),
-            parseISO(item.launch_year)
-          );
-          if (dis === 365) {
-            return dis;
-          }
-        });
-        setSearchData(lastYearData);
-        break;
+        return setSearchData(
+          data.filter((item: { launch_year: string }) => {
+            const dis = differenceInDays(
+              parseISO(formatISO(new Date())),
+              parseISO(item.launch_year)
+            );
+            if (dis === 365) {
+              return dis;
+            }
+            return null;
+          })
+        );
       case "success":
-        const successData = data.filter((item: { launch_success: boolean }) => {
-          return item.launch_success;
-        });
-        setSearchData(successData);
-        break;
+        return setSearchData(
+          data.filter((item: { launch_success: boolean }) => {
+            return item.launch_success;
+          })
+        );
+
       case "fail":
-        const failData = data.filter((item: { launch_success: boolean }) => {
-          return !item.launch_success;
-        });
-        setSearchData(failData);
-        break;
+        return setSearchData(
+          data.filter((item: { launch_success: boolean }) => {
+            return !item.launch_success;
+          })
+        );
+
       case "upcoming":
-        const upcoming = data.filter((item: { upcoming: boolean }) => {
-          return item.upcoming;
-        });
-        setSearchData(upcoming);
-        break;
+        return setSearchData(
+          data.filter((item: { upcoming: boolean }) => {
+            return item.upcoming;
+          })
+        );
       default:
         setSearchData(data);
     }
+    return null;
   };
   return (
     <div>
