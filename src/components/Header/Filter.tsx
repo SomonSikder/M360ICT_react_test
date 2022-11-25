@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../utils/Button";
+import Button from "../../utils/Button";
 
 type FilterProps = {
   handleFilter: (value: string) => void;
@@ -17,18 +17,17 @@ const Filter = (props: FilterProps) => {
           handleFilter={handleFilter}
           callValue={"lastWeek"}
         ></Button>
-        <button
-          className="btn btn-primary mx-2"
-          onClick={(e) => handleFilter("lastMonth")}
-        >
-          Last Month
-        </button>
-        <button
-          className="btn btn-primary mx-2"
-          onClick={(e) => handleFilter("lastYear")}
-        >
-          Last Year
-        </button>
+        <Button
+          text={"Last Month"}
+          handleFilter={handleFilter}
+          callValue={"lastMonth"}
+        ></Button>
+
+        <Button
+          text={"Last Year"}
+          handleFilter={handleFilter}
+          callValue={"lastYear"}
+        ></Button>
       </div>
       {/* Success and Failur */}
       <div>
@@ -38,7 +37,7 @@ const Filter = (props: FilterProps) => {
           callValue={"success"}
         ></Button>
         <Button
-          text={"Failer"}
+          text={"Fail"}
           handleFilter={handleFilter}
           callValue={"fail"}
         ></Button>

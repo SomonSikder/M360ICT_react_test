@@ -3,7 +3,7 @@ import React, { useState } from "react";
 type HeaderProps = {
   handleSearch: (name: string) => void;
 };
-const Search = (props: HeaderProps) => {
+const SearchByRoketName = (props: HeaderProps) => {
   const [searchValue, setSerchValue] = useState("");
 
   const handleClick = () => {
@@ -33,4 +33,4 @@ const Search = (props: HeaderProps) => {
   );
 };
 
-export default Search;
+export default SearchByRoketName;
